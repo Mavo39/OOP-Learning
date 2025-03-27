@@ -8,6 +8,7 @@ class Wallet{
     public int bill50;
     public int bill100;
 
+    // 引数なしでコンストラクタを実行
     public Wallet(){}
 
     public int getTotalMoney(){
