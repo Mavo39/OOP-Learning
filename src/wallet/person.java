@@ -8,8 +8,15 @@ class Person{
     public double weightKg;
     public Wallet wallet;
 
-    public Person(String firstName){
+    public Person(String firstName, String lastName, int x, double y, double z){
         this.firstName = firstName;
+        this.lastName = lastName;
+        // "this"はメソッド内で必ずしも使用される必要はないようです
+        age = x; // ageの状態がxにアップグレード
+        heightM = y;
+        weightKg = z;
+        // Personオブジェクトを作成すると、Walletオブジェクトを持つことになる
+        wallet = new Wallet(); // デフォルトの財布を設定
     }
 
     // 所持金を取得するメソッド
@@ -21,6 +28,18 @@ class Person{
         }
         // 財布を持っている場合：財布内の全額を表示
         return this.wallet.getTotalMoney();
+    }
+
+    // Personオブジェクトの状態を出力するメソッド
+    public void printState(){
+        System.out.println("firstname - " + firstName);
+        System.out.println("lastname - " + lastName);
+        System.out.println("age - " + age);
+        double weightKg = 70; // ローカル変数の優先度が高い
+        System.out.println("height - " + heightM + ", joking it is " + this.heightM);
+        System.out.println("weight - " + weightKg);
+        System.out.println("Current Money - " + getCash());
+        System.out.println();
     }
 }
 

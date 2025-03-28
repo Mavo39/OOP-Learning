@@ -2,26 +2,15 @@ package wallet;
 
 class Main{
     public static void main(String[] args){
-        Person p = new Person("Maza");
+        Person p = new Person("Maza", "Davis", 30, 175, 65);
         // Mazaの情報
-        System.out.println("firstname - " + p.firstName);
-        System.out.println("lastname - " + p.lastName);
-        System.out.println("age - " + p.age);
-        System.out.println("height - " + p.heightM);
-        System.out.println("weight - " + p.weightKg);
-        System.out.println("Current Money - " + p.getCash());
+        p.printState();
 
-        // 情報の更新
-        p.lastName = "Matt";
-        p.age = 25;
-        p.heightM = 180;
-        p.weightKg = 80;
+        // 札の額面と枚数を指定して財布に入金
+        p.wallet.insertBill(5,3);
+        p.wallet.insertBill(100,2);
 
-        System.out.println();
-        System.out.println("firstname - " + p.firstName);
-        System.out.println("lastname - " + p.lastName);
-        System.out.println("age - " + p.age);
-        System.out.println("height - " + p.heightM);
-        System.out.println("weight - " + p.weightKg);
+        // 状態が更新されていることを確かめる
+        p.printState();
     }
 }

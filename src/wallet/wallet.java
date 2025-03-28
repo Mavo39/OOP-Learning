@@ -14,4 +14,32 @@ class Wallet{
     public int getTotalMoney(){
         return (1 * this.bill1) + (5 * this.bill5) + (10 * this.bill10) + (20 * bill20) + (50 * bill50) + (100 * bill100);
     }
+
+    // bill に応じて対応するメンバ変数を増やし、挿入した総額を返すメソッド
+    // 引数（bill: 札の額面 / amount: 枚数）
+    public int insertBill(int bill, int amount){
+        switch(bill){
+            case(1):
+                bill1 += amount;
+                break;
+            case(5):
+                bill5 += amount;
+                break;
+                case(10):
+                bill10 += amount;
+                break;
+            case(20):
+                bill20 += amount;
+                break;
+            case(50):
+                bill50 += amount;
+                break;
+            case(100):
+                bill100 += amount;
+                break;
+            default:
+                return 0;
+        }
+        return bill * amount;
+    }
 }
