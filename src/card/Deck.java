@@ -26,14 +26,16 @@ class Deck{
         for(int i = 0; i < s; i++){
             for(int j = 0; j < r; j++){
                 // 初期化したカード配列に新しいカードを格納していく
-                cards[i*r+j] = new Card(Deck.RANKS[j], Deck.SUITS[i]); // インデックスがi,jが逆にならないように注意
+                cards[i*r+j] = new Card(Deck.SUITS[i], Deck.RANKS[j]);
             }
         }
 
         return cards;
     }
 
-    // デッキをシャッフルするメソッド
+    // 1. インスタンスメソッド
+    // デッキをシャッフルするメソッド(インスタンスメソッド）
+    // このメソッドはデッキ内のカードをシャッフルするためオブジェクトの状態に依存する
     public void shuffleDeck(){
         int deckSize = this.cards.length;
         // デッキの最後から始めて、ランダムに選んだカードとスワップ
@@ -48,6 +50,42 @@ class Deck{
             this.cards[j] = temp;
         }
     }
+
+    // 2. 静的メソッド
+    // 引数としてカードの配列を受け取り、それをその場でシャッフルするメソッド（静的メソッド）
+    // Deckクラスが名前空間として機能し、再利用可能な関数になる
+    // この方法は引数として与えられた配列自体が変更され、副作用が発生する
+    public static void shuffleDeckInPlace(Card[] cards){
+        for(int i = cards.length-1; i >= 0; i--){
+            int j = (int)Math.floor(Math.random() * (i+1));
+            Card temp = cards[i];
+            cards[i] = cards[j];
+            cards[j] = temp;
+        }
+    }
+
+    // 3. 2のメソッドの副作用を発生させない静的メソッド
+    // 引数で与えられた配列のコピーを作る
+    // ただし、この方法は追加でメモリを消費する
+    public static Card[] shuffleDeckOutOfPlace(Card[] cards){
+        // ディープコピーを手動で作成
+        Card[] cardsCopy = new Card[cards.length];
+        for(int i = 0; i < cards.length; i++){
+            cardsCopy[i] = cards[i];
+        }
+
+        // ディープコピーに対して実行
+        for(int i = cardsCopy.length-1; i >= 0; i--){
+            int j = (int)Math.floor(Math.random() * (i+1));
+            Card temp = cardsCopy[i];
+            cardsCopy[i] = cardsCopy[j];
+            cardsCopy[j] = temp;
+        }
+
+        // 新しい配列を返す
+        return cardsCopy;
+    }
+
 
     // デッキを文字列で表現するメソッド
     @Override
