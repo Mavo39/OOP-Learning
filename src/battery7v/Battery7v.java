@@ -4,12 +4,12 @@ class Battery7v{
     public String manufacturer;
     public String model;
 
-    // クラス変数
-    public static double voltage = 7.2;
-    public static String type = "Lithium-Ion";
+    // クラス変数 (全てのインスタンスで共有)
+    public static final double VOLTAGE = 7.2; // 定数化（大文字表記する）
+    public static final String type = "Lithium-Ion"; // 定数化
     public static int manufacturedCount;
 
-    // インスタンス変数
+    // インスタンス変数 (インスタンスごとに持つ)
     public double ampHours;
     public double weightKg;
     public double[] dimensionMm;
@@ -20,17 +20,18 @@ class Battery7v{
         this.ampHours = ampHours;
         this.weightKg = weightKg;
         this.dimensionMm = new double[]{wMm, hMm, dMm};
-        // 製造された電池の数をカウント
+        // 製造された電池の数をカウント(新しいオブジェクトを生成すると自動的にカウントされ、クラス変数が更新される)
         Battery7v.manufacturedCount += 1;
     }
 
+    // オーバーライドにより、printlnメソッドの呼び出しにより以下のtoStringメソッドが呼び出されるようになる
     @Override
     public String toString(){
-        return this.manufacturer + " " + this.model + " " + Battery7v.type + " Battery: " + this.getPowerCapacity() + "Wh (" + Battery7v.voltage + "V/" + this.ampHours + "Ah) - " + this.dimensionMm[0] + "(W)x" + this.dimensionMm[1] + "(H)x" + this.dimensionMm[2] + "(D) " + this.getVolume() + " volume " + this.weightKg + "kg";
+        return this.manufacturer + " " + this.model + " " + Battery7v.type + " Battery: " + this.getPowerCapacity() + "Wh (" + Battery7v.VOLTAGE + "V/" + this.ampHours + "Ah) - " + this.dimensionMm[0] + "(W)x" + this.dimensionMm[1] + "(H)x" + this.dimensionMm[2] + "(D) " + this.getVolume() + " volume " + this.weightKg + "kg";
     }
 
     public double getPowerCapacity(){
-        return Battery7v.voltage * this.ampHours;
+        return Battery7v.VOLTAGE * this.ampHours;
     }
 
     public double getVolume(){
