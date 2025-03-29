@@ -18,10 +18,10 @@ class Main{
 
         System.out.println("Voltageがすべてのインスタンスで同じか確認");
         // インスタンス経由でクラス変数にアクセス（警告あり）
-        System.out.println(zlD72.VOLTAGE);
-        System.out.println(zlD50.VOLTAGE);
-        System.out.println(zlD40.VOLTAGE);
-        System.out.println(mdPL140.VOLTAGE);
+        // System.out.println(zlD72.VOLTAGE);
+        // System.out.println(zlD50.VOLTAGE);
+        // System.out.println(zlD40.VOLTAGE);
+        // System.out.println(mdPL140.VOLTAGE);
         // 静的変数は`クラス名.変数名`でアクセスする
         System.out.println(Battery7v.VOLTAGE);
         
