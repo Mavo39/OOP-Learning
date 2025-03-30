@@ -7,6 +7,7 @@ class Battery7v{
     // クラス変数 (全てのインスタンスで共有)
     public static final double VOLTAGE = 7.2; // 定数化（大文字表記する）
     public static final String type = "Lithium-Ion"; // 定数化
+    // 非カプセル化による副作用を実感するためにExternalModuleクラスのメソッドで変更されることを検証
     public static int manufacturedCount;
 
     // インスタンス変数 (インスタンスごとに持つ)
