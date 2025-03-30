@@ -10,5 +10,10 @@ class Test {
         RGB24 color3 = new RGB24("100110011111111100110011");
         // 16進数で色を作成
         RGB24 grey = new RGB24("7b7b7b");
+
+        System.out.println(color1);
+        System.out.println(color2);
+        System.out.println(color3);
+        System.out.println(grey);
     }
 }

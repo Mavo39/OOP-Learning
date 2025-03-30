@@ -2,14 +2,13 @@ package rgb24;
 
 class RGB24 {
     // カプセル化
-    private int red;
-    private int green;
-    private int blue;
+    // private int red;
+    // private int green;
+    // private int blue;
+    private String rgbHex;
 
     public RGB24(int red, int green, int blue){
-        this.red = red;
-        this.green = green;
-        this.blue = blue;
+        this.rgbHex = String.format("%02x%02x%02x", red, green, blue);
     }
 
     public RGB24(String inputString){
@@ -28,9 +27,10 @@ class RGB24 {
         if(hex.length() != 6) this.setAsBlack();
         else {
             // 文字列を2文字ずつに分割し、それぞれを16進数として解釈して、RGB色成分に設定
-            this.red = Integer.parseInt(hex.substring(0,2), 16);
-            this.green = Integer.parseInt(hex.substring(2,4), 16);
-            this.blue = Integer.parseInt(hex.substring(4,6), 16);
+            // this.red = Integer.parseInt(hex.substring(0,2), 16);
+            // this.green = Integer.parseInt(hex.substring(2,4), 16);
+            // this.blue = Integer.parseInt(hex.substring(4,6), 16);
+            this.rgbHex = hex;
         }
     }
 
@@ -39,36 +39,65 @@ class RGB24 {
         if(bin.length() != 24) this.setAsBlack();
         else {
             // 文字列を8文字ずつに分割し、それぞれを2進数として解釈して、RGB色成分に設定
-            this.red = Integer.parseInt(bin.substring(0,8), 24);
-            this.green = Integer.parseInt(bin.substring(8,16), 24);
-            this.blue = Integer.parseInt(bin.substring(16,24), 24);
+            int red = Integer.parseInt(bin.substring(0,8), 2);
+            int green = Integer.parseInt(bin.substring(8,16), 2);
+            int blue = Integer.parseInt(bin.substring(16), 2);
+            this.rgbHex = String.format("%02x%02x%02x", red, green, blue);
         }
     }
 
     public void setAsBlack(){
-        this.red = 0;
-        this.green = 0;
-        this.blue = 0;
+        // this.red = 0;
+        // this.green = 0;
+        // this.blue = 0;
+        this.rgbHex = "000000";
     }
 
     // RGBを16進数の文字列で返す
     public String getHex(){
-        String hex = Integer.toHexString(this.red);
-        hex += Integer.toHexString(this.green);
-        hex += Integer.toHexString(this.blue);
-
-        return hex;
+        // String hex = Integer.toHexString(this.red);
+        // hex += Integer.toHexString(this.green);
+        // hex += Integer.toHexString(this.blue);
+        return this.rgbHex;
     }
 
     // RGBを2進数の文字列で返す
     public String getBits(){
-        return Integer.toBinaryString(Integer.parseInt(this.getHex(),16));
+        String binary = "";
+        for (int i = 0; i < rgbHex.length(); i += 2) {
+            String hexByte = rgbHex.substring(i, i + 2);
+            binary += String.format("%8s", Integer.toBinaryString(Integer.parseInt(hexByte, 16)))
+                          .replace(' ', '0');
+        }
+        return binary;
+    }
+
+
+       // 各色の値を取得（必要に応じて計算）
+       private int getRed() {
+        return Integer.parseInt(rgbHex.substring(0, 2), 16);
+    }
+
+    private int getGreen() {
+        return Integer.parseInt(rgbHex.substring(2, 4), 16);
+    }
+
+    private int getBlue() {
+        return Integer.parseInt(rgbHex.substring(4, 6), 16);
     }
 
     public String getColorShade(){
-        if(this.red == this.green && this.green == this.blue) return "greyscale";
-        String[] stringTable = new String[]{"red", "green", "blue"};
-        int[] values = {this.red, this.green, this.blue};
+        // if(this.red == this.green && this.green == this.blue) return "greyscale";
+        // String[] stringTable = new String[]{"red", "green", "blue"};
+        // int[] values = {this.red, this.green, this.blue};
+
+        int red = this.getRed();
+        int green = this.getGreen();
+        int blue = this.getBlue();
+
+        if (red == green && green == blue) return "greyscale";
+        String[] stringTable = {"red", "green", "blue"};
+        int[] values = {red, green, blue};
 
         int max = values[0];
         int maxIndex = 0;
@@ -84,6 +113,6 @@ class RGB24 {
     // RGB24クラスのインスタンスの情報を文字列で返します。
     @Override
     public String toString(){
-        return "The color is rgb(" + this.red + "," + this.green + "," + this.blue + "). Hex: " + this.getHex() + ", binary: " + this.getBits();
+        return "The color is rgb(" + this.getRed() + "," + this.getGreen() + "," + this.getBlue() + "). Hex: " + this.getHex() + ", binary: " + this.getBits();
     }
 }
