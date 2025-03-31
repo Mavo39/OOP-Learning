@@ -8,8 +8,14 @@ class RGB24 {
     private String rgbHex;
 
     public RGB24(int red, int green, int blue){
+        // 0~255の数字をフォーマット指定子ごとに、2桁の16進数で表示し、1桁の場合は0で埋める
         this.rgbHex = String.format("%02x%02x%02x", red, green, blue);
+        // %：フォーマット開始
+        // 0：足りない桁を「0」で埋める
+        // 2：2桁表示にする
+        // x：16進数（小文字）に変換
     }
+    
 
     public RGB24(String inputString){
         int l = inputString.length();
@@ -64,6 +70,7 @@ class RGB24 {
     // RGBを2進数の文字列で返す
     public String getBits(){
         String binary = "";
+        // 16進数の文字列を2文字ずつ（R・G・Bごとに）処理
         for (int i = 0; i < rgbHex.length(); i += 2) {
             String hexByte = rgbHex.substring(i, i + 2);
             binary += String.format("%8s", Integer.toBinaryString(Integer.parseInt(hexByte, 16)))
@@ -72,9 +79,8 @@ class RGB24 {
         return binary;
     }
 
-
-       // 各色の値を取得（必要に応じて計算）
-       private int getRed() {
+    // 各色の値を取得（必要に応じて計算）
+    private int getRed() {
         return Integer.parseInt(rgbHex.substring(0, 2), 16);
     }
 
@@ -90,7 +96,7 @@ class RGB24 {
         // if(this.red == this.green && this.green == this.blue) return "greyscale";
         // String[] stringTable = new String[]{"red", "green", "blue"};
         // int[] values = {this.red, this.green, this.blue};
-
+        // getterで値を取得
         int red = this.getRed();
         int green = this.getGreen();
         int blue = this.getBlue();
@@ -110,7 +116,7 @@ class RGB24 {
         return stringTable[maxIndex];
     }
 
-    // RGB24クラスのインスタンスの情報を文字列で返します。
+    // RGB24クラスのインスタンスの情報を文字列で返す
     @Override
     public String toString(){
         return "The color is rgb(" + this.getRed() + "," + this.getGreen() + "," + this.getBlue() + "). Hex: " + this.getHex() + ", binary: " + this.getBits();
