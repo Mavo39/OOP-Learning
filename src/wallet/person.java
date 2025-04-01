@@ -23,7 +23,8 @@ class Person{
         this.age = age;
         this.heightM = heightM;
         this.weightKg = weightKg;
-        
+        this.denomination = "highestFirst";
+        if(initialMoney > 0) this.getPayed(initialMoney);
     }
 
     public String getFullName(){
@@ -42,7 +43,9 @@ class Person{
     }
 
     public int[] getPayed(int money){
+        if(this.wallet == null || money <= 0) return new int[6];
 
+        int bills[] = calculateBills(money);
     }
 
     public int[] spendMoney(int money){
@@ -62,6 +65,18 @@ class Person{
         
     }
 
+    public int[] calculateBills(int amount){
+        int[] bills = new int[6];
+        int remaining = amount;
+
+        switch(denomination){
+            case("highestFirst"):
+                bills[6] = remaining / 100;
+
+
+                bills[0] = remaining;
+        }
+    }
 
     // Personオブジェクトの状態を出力するメソッド
     // public void printState(){

@@ -54,25 +54,30 @@ class Wallet{
     }
 
     public int removeBill(int bill, int amount){
-        int removedAmount = 0;
         switch(bill){
             case(1):
-                bill1 -= amount;
+                if(this.bill1 < amount) break; 
+                this.bill1 -= amount;
                 break;
             case(5):
-                bill5 -= amount;
+                if(bill5 < amount) break;
+                this.bill5 -= amount;
                 break;
             case(10):
-                bill10 -= amount;
+                if(bill10 < amount) break;
+                this.bill10 -= amount;
                 break;
             case(20):
-                bill20 -= amount;
+                if(bill20 < amount) break;
+                this.bill20 -= amount;
                 break;
             case(50):
-                bill50 -= amount;
+                if(bill50 < amount) break;
+                this.bill50 -= amount;
                 break;
             case(100):
-                bill100 -= amount;
+                if(bill100 < amount) break;
+                this.bill100 -= amount;
                 break;
             default:
                 return 0;
