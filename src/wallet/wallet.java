@@ -35,7 +35,7 @@ class Wallet{
             case(5):
                 this.bill5 += amount;
                 break;
-                case(10):
+            case(10):
                 this.bill10 += amount;
                 break;
             case(20):
@@ -83,5 +83,10 @@ class Wallet{
                 return 0;
         }
         return bill * amount;
+    }
+
+    // 財布の中身をお札ごとに確認するメソッドを追加で作成
+    public int[] getBillCounts() {
+        return new int[]{bill1, bill5, bill10, bill20, bill50, bill100};
     }
 }
