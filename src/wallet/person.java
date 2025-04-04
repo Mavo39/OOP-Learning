@@ -7,6 +7,7 @@ class Person{
     private double heightM;
     private double weightKg;
     private String denomination;
+    // PersonクラスはWalletクラスを持つ：集約関係を示す
     private Wallet wallet;
 
     public Person(String firstName, String lastName, int age, double heightM, double weightKg){
@@ -24,6 +25,8 @@ class Person{
         this.heightM = heightM;
         this.weightKg = weightKg;
         this.denomination = "highestFirst";
+        // Personオブジェクトが作成されるたびに、新たなWalletオブジェクトも作成される
+        // Personオブジェクトが削除された場合、Walletオブジェクトは残ることができる（集約を表す）
         this.wallet = new Wallet();
         // お金を財布に入れる
         if(initialMoney > 0) this.getPayed(initialMoney);
@@ -75,12 +78,17 @@ class Person{
         else return new int[6];
     }
 
+    // Walletをnullに設定し、落としたWalletを返す
+    // この操作により、PersonオブジェクトからWalletオブジェクトが切り離されるが、Walletオブジェクト自体は依然として存在する
+    // PersonとWalletの間の集約関係を示す
     public Wallet dropWallet(){
         Wallet dropedWallet = this.wallet;
         this.wallet = null;
         return dropedWallet;
     }
 
+    // Walletを追加するメソッド
+    // PersonとWalletの集約関係を示す
     public void addWallet(Wallet wallet){
         this.wallet = wallet;
     }
