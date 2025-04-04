@@ -9,13 +9,17 @@ class Person{
     private String denomination;
     // PersonクラスはWalletクラスを持つ：集約関係を示す
     private Wallet wallet;
+    // Address型のフィールドを追加
+    // 1つのPersonと1つのAddressが関連づけられ、これが集約を示す
+    private Address address;
 
-    public Person(String firstName, String lastName, int age, double heightM, double weightKg){
+    public Person(String firstName, String lastName, int age, double heightM, double weightKg, Address address){
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.heightM = heightM;
         this.weightKg = weightKg;
+        this.address = address;
     }
 
     public Person(String firstName, String lastName, int age, double heightM, double weightKg, int initialMoney){
@@ -88,7 +92,7 @@ class Person{
     }
 
     // Walletを追加するメソッド
-    // PersonとWalletの集約関係を示す
+    // PersonとWallet
     public void addWallet(Wallet wallet){
         this.wallet = wallet;
     }
