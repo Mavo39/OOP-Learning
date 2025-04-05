@@ -1,11 +1,21 @@
 package wallet;
 
 class Person{
-    private String firstName;
-    private String lastName;
+    // Nameクラスで実装
+    // private String firstName;
+    // private String lastName;
+        
+    // Nameオブジェクトを参照
+    // NameクラスはPersonクラスのコンポジションの一部
+    private Name name;
     private int age;
-    private double heightM;
-    private double weightKg;
+    // BMIクラスで実装
+    // private double heightM;
+    // private double weightKg;
+
+    // BMIオブジェクトを参照
+    // BMIクラスはPersonクラスのコンポジションの一部
+    private BMI bmi;
     private String denomination;
     // PersonクラスはWalletクラスを持つ：集約関係を示す
     private Wallet wallet;
@@ -14,20 +24,22 @@ class Person{
     private Address address;
 
     public Person(String firstName, String lastName, int age, double heightM, double weightKg, Address address){
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.name = new Name(firstName, lastName);
         this.age = age;
-        this.heightM = heightM;
-        this.weightKg = weightKg;
+        this.bmi = new BMI(heightM, weightKg);
         this.address = address;
     }
 
     public Person(String firstName, String lastName, int age, double heightM, double weightKg, int initialMoney){
-        this.firstName = firstName;
-        this.lastName = lastName;
+        // Nameクラスを活用
+        // this.firstName = firstName;
+        // this.lastName = lastName;
+        this.name = new Name(firstName, lastName);
         this.age = age;
-        this.heightM = heightM;
-        this.weightKg = weightKg;
+        // BMIクラスを活用
+        // this.heightM = heightM;
+        // this.weightKg = weightKg;
+        this.bmi = new BMI(heightM, weightKg);
         this.denomination = "highestFirst";
         // Personオブジェクトが作成されるたびに、新たなWalletオブジェクトも作成される
         // Personオブジェクトが削除された場合、Walletオブジェクトは残ることができる（集約を表す）
@@ -36,9 +48,10 @@ class Person{
         if(initialMoney > 0) this.getPayed(initialMoney);
     }
 
-    public String getFullName(){
-        return firstName + " " + lastName;
-    }
+    // Nameクラスで実装
+    // public String getFullName(){
+    //     return firstName + " " + lastName;
+    // }
 
     // 所持金を取得するメソッド
     public int getCash(){
@@ -175,11 +188,9 @@ class Person{
 
     // Personオブジェクトの状態を出力するメソッド
     public void printState(){
-        System.out.println("firstname - " + firstName);
-        System.out.println("lastname - " + lastName);
+        System.out.println("name - " + name.toString());
         System.out.println("age - " + age);
-        System.out.println("height - " + heightM + ", joking it is " + heightM);
-        System.out.println("weight - " + weightKg);
+        System.out.println(bmi.toString());
         System.out.println("Current Money - " + getCash());
         System.out.println();
     }
