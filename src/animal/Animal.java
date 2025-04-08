@@ -42,6 +42,10 @@ class Animal {
         return this.hungerPercent >= 70;
     }
 
+    public int getHungerPercent(){
+        return this.hungerPercent;
+    }
+
     // 睡眠をとるメソッド
     // 睡眠をとると睡眠度が0になる
     public void sleep(){

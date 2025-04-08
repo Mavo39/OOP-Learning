@@ -96,7 +96,7 @@ class Mammal extends Animal {
 
     // mammalの状態を出力するメソッド
     public String mammalInformation(){
-        return "This is a mammal with the following - " + " fur: " + this.furType + "/teethReplaced: " + (this.toothCounter > 0) + "/Pregnant: " + this.isPregnant() + "/Body Temperature: " + this.bodyTemperatureC;
+        return "This is a mammal with the following - " + " fur: " + this.furType + " / teethReplaced: " + (this.toothCounter > 0) + " / Pregnant: " + this.isPregnant() + " / Body Temperature: " + this.bodyTemperatureC;
     }
 
     // 親クラスAnimalのメソッドをオーバーライド
@@ -115,7 +115,7 @@ class Mammal extends Animal {
 
     @Override
     public void eat(){
-        // superで親クラスのメソッドを呼び出し
+        // superで親クラスのeatメソッドを呼び出し
         super.eat(); 
         // その後に固有の行動を追加する
         this.bite();
