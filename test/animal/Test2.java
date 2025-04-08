@@ -10,6 +10,7 @@ class Test2 {
         System.out.println(bull);
         System.out.println();
 
+
         cow.eat();
         cow.sleep();
         System.out.println(cow.status());
@@ -17,6 +18,7 @@ class Test2 {
         // 状態を変更し、最後にdieメソッドを呼び出して、cowを"死亡"状態にする
         cow.setAsHungry();
         cow.setAsSleepy();
+        System.out.println(cow.status());
         cow.die();
         System.out.println(cow.status());
         System.out.println();

@@ -9,6 +9,10 @@ class BMI {
         this.weightKg = weightKg;
     }
 
+    public double getHeightM(){
+        return this.heightM;
+    }
+
     public double getWeightKg(){
         return this.weightKg;
     }

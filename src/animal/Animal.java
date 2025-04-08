@@ -5,13 +5,13 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 class Animal {
+    // protected: 同じパッケージまたはサブクラスからアクセス可能
     protected String species;
     protected BMI bmi;
     protected double lifeSpanDays;
     protected String biologicalSex;
     protected Instant spawnTime;
     protected Instant deathTime;
-
     private int hungerPercent = 100;
     private int sleepPercent = 100;
 
@@ -83,11 +83,11 @@ class Animal {
 
     @Override
     public String toString(){
-        return this.species + this.bmi + " lives " + this.lifeSpanDays + " days/" + "gender:" + this.biologicalSex + "." + this.status();
+        return this.species + " " + this.bmi + " lives " + this.lifeSpanDays + " days/" + "gender:" + this.biologicalSex + "\n" + this.status();
     }
 
     public String status(){
-        return this.species + " status:" + " Hunger - " + this.hungerPercent + "%, " + "sleepiness:"+this.sleepPercent + "%" + ", Alive - " + this.isAlive() + ". First created at " + this.dateCreated();
+        return this.species + " status:" + " Hunger - " + this.hungerPercent + "%, " + "sleepiness:"+this.sleepPercent + "%" + ", Alive - " + this.isAlive() + ". \nFirst created at " + this.dateCreated();
     }
 
     public String dateCreated(){

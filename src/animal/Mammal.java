@@ -1,6 +1,7 @@
 package animal;
 
 class Mammal extends Animal {
+    // Mammalクラス固有のフィールドを定義
     private double furLengthCm;
     private String furType;
     private int toothCounter;
@@ -35,6 +36,7 @@ class Mammal extends Animal {
 
     public void produceMilk(){
         if(!this.isAlive()) return;
+        // 妊婦で乳腺を持っているとき
         if(this.isPregnant() && this.mammaryGland) System.out.println("Producing milk...");
         else System.out.println("Cannot produce milk");
         System.out.println();
@@ -44,8 +46,11 @@ class Mammal extends Animal {
     // このプロセスにおいて親クラスの状態にアクセスすることに注意が必要
     public void mate(Mammal mammal){
         if(!this.isAlive()) return;
-        if(this.species.equals(mammal.species)) return;
+        // 種が同一でない場合
+        if(!this.species.equals(mammal.species)) return;
+        // 自分がメスでパートナーがオスの場合：自分（メス）が受精
         if(this.biologicalSex.equals("female") && mammal.biologicalSex.equals("male")) this.fertalize();
+        // 自分がオスでパートナーがメスの場合：パートナーが受精
         else if(this.biologicalSex.equals("male") && mammal.biologicalSex.equals("female")) mammal.fertalize();
     }
 
@@ -61,7 +66,7 @@ class Mammal extends Animal {
         return this.isPregnant;
     }
 
-    // 噛む動作を表現するメソッド
+    // 単一の下顎で噛むこと、そして歯の生え変わりがあったかどうかを出力するメソッド
     public void bite(){
         if(!this.isAlive()) return;
         System.out.println(this.species + " bites with their single lower jaws which has" +  (this.toothCounter == 0 ? " not" : "")  + " replaced its teeth: " + (this.toothCounter > 0));
