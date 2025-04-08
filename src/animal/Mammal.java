@@ -93,4 +93,32 @@ class Mammal extends Animal {
     public void adjustBodyHeat(){
         this.bodyTemperatureC = this.avgBodyTemperatureC;
     }
+
+    // mammalの状態を出力するメソッド
+    public String mammalInformation(){
+        return "This is a mammal with the following - " + " fur: " + this.furType + "/teethReplaced: " + (this.toothCounter > 0) + "/Pregnant: " + this.isPregnant() + "/Body Temperature: " + this.bodyTemperatureC;
+    }
+
+    // 親クラスAnimalのメソッドをオーバーライド
+    @Override
+    public void move(){
+        if(!this.isAlive()) return;
+        System.out.println("This mammal is moving...");
+        System.out.println();
+    }
+
+    @Override
+    public String toString(){
+        // 親クラスでのtoString()による出力に、追加する
+        return super.toString() + this.mammalInformation();
+    }
+
+    @Override
+    public void eat(){
+        // superで親クラスのメソッドを呼び出し
+        super.eat(); 
+        // その後に固有の行動を追加する
+        this.bite();
+        System.out.println("this " + this.species + " is eating with its single lower jaws");
+    }
 }
