@@ -40,4 +40,15 @@ abstract class Shape2d {
     public String getDateCreated(){
         return new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(this.createdTime);
     }
+
+    // 抽象メソッド：サブクラスで実装を行なう必要がある
+    public abstract String getDescription();
+    public abstract double getArea();
+    public abstract double getPerimeter();
+    
+    // toStringメソッド：オブジェクトの説明と作成日時を文字列として返す
+    @Override
+    public String toString(){
+        return this.getDescription() + " created at " + this.getDateCreated();
+    }
 }
