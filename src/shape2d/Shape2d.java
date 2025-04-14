@@ -3,13 +3,13 @@ package shape;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-abstract class Shape2d {
+abstract class Shape2D {
     protected double scale = 1;
     protected String borderColor = "black";
     protected String backgroundColor = "white";
     protected Date createdTime;
 
-    public Shape2d(){
+    public Shape2D(){
         this.createdTime = new java.util.Date();
     }
 
