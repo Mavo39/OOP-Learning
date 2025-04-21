@@ -1,27 +1,27 @@
 package stack;
+import java.lang.StringBuilder;
 
-// IntegerStackとほぼ同じ処理で、データ型のみ異なる
-class DoubleStack {
-    DoubleNode head;
+class Stack {
+    Node head;
 
     // スタックに新しい要素を追加
-    public void push(Double data){
-        DoubleNode temp = this.head;
-        this.head = new DoubleNode(data);
+    public void push(Object data){
+        Node temp = this.head;
+        this.head = this.head.next;
         this.head.next = temp;
     }
 
     // スタックの先頭の要素を取り出し、その要素をスタックから削除
-    public Double pop(){
+    public Object pop(){
         if(this.head == null) return null;
 
-        DoubleNode temp = this.head;
+        Node temp = this.head;
         this.head = this.head.next;
         return temp.data;
     }
 
     // スタックの先頭の要素を取り出すが、削除はしない
-    public Double peek(){
+    public Object peek(){
         if(this.head == null) return null;
         return this.head.data;
     }
@@ -32,7 +32,7 @@ class DoubleStack {
         if(this.head == null) return "null";
 
         StringBuilder str = new StringBuilder("|" + this.head.data + "|");
-        DoubleNode iterator = this.head.next;
+        Node iterator = this.head.next;
 
         while(iterator != null && iterator.next != null){
             str.append(iterator.data + ",");
@@ -43,3 +43,5 @@ class DoubleStack {
         return str.toString() + "|";
     }
 }
+// Objectクラスを使ったアプローチには、いくつか問題がある
+// スタックは同一のデータ型から成る均一なリストであるべきで、異なるデータ型を混在させてしまうと、論理エラーや実行時エラーを引き起こす可能性がある。

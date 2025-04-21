@@ -39,7 +39,7 @@ class IntegerStack {
             iterator = iterator.next;
         }
 
-        str.append(iterator.next);
-        return str.toString() + "]";
+        str.append(iterator.data);
+        return str.toString() + "|";
     }
 }
