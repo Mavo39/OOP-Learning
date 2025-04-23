@@ -1,6 +1,6 @@
 package DI;
 
-class Person{
+class Person implements BMIObject {
     private String firstName;
     private String lastName;
     private int age;
@@ -17,10 +17,12 @@ class Person{
         this.biologicalSex = biologicalSex;
     }
 
+    @Override
     public double getHeightM(){
         return this.heightM;
     }
 
+    @Override
     public double getWeightKg(){
         return this.weightKg;
     }
