@@ -60,11 +60,11 @@ class Animal{
 
     @Override
     public String toString(){
-        return this.species + " " + this.bmi + " lives " + this.lifeSpanDays + " days / " + "gender: " + this.biologicalSex + " ." + this.status();
+        return this.species + ":\n" + this.bmi + " lives - " + this.lifeSpanDays + "days \n" + " gender - " + this.biologicalSex + "\n" + this.status();
     }
 
     public String status(){
-        return this.species + " status: \n" + " Hunger - " + this.hungerPercent + "% \n" + " sleepiness: "+this.sleepPercent + "% \n" + " Alive - " + this.isAlive() + " First created at " + this.dateCreated();
+        return this.species + " status: \n" + " Hunger - " + this.hungerPercent + "% \n" + " Sleepiness - "+this.sleepPercent + "% \n" + " Alive - " + this.isAlive() + "\n" + " First created at " + this.dateCreated();
     }
 
     public String dateCreated(){

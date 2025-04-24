@@ -1,6 +1,5 @@
 package fairyWorld;
 
-
 class BMI{
     private double heightM;
     private double weightKg;

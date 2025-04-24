@@ -20,6 +20,6 @@ class Person extends Mammal {
 
     @Override
     public String toString(){
-        return super.toString() + ". The name of this Person is " + this.getName();
+        return super.toString() + "\n The name of this Person is " + this.getName();
     }
 }

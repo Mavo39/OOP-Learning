@@ -19,7 +19,7 @@ class Mammal extends Animal {
 
     @Override
     public String toString(){
-        return super.toString() + " " + this.mammalInformation();
+        return super.toString() + "\n" + this.mammalInformation();
     }
 
     public void increaseBodyHeat(double celcius){
@@ -35,6 +35,6 @@ class Mammal extends Animal {
     }
 
     public String mammalInformation(){
-        return "This is a mammal with a temperature of: " + this.bodyTempertureC;
+        return "This is a mammal with a temperature of " + this.bodyTempertureC;
     }
 }
