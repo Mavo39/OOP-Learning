@@ -17,7 +17,7 @@ class Cat extends Mammal implements PlayfulPet {
 
     @Override
     public String toString(){
-        return super.toString() + "\n This is a cat."; 
+        return super.toString() + "\nThis is a cat."; 
     }
 
     public void meow(){

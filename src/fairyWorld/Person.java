@@ -10,7 +10,7 @@ class Person extends Mammal {
 
     public Person(String firstName, String lastName, int age, double heightM, double weightKg, String biologicalSex){
         super(Person.SPECIES, heightM, weightKg, Person.LIFE_EXPECTANCY, biologicalSex, Person.BODY_TEMPERATURE);
-        this.name = name;
+        this.name = new Name(firstName, lastName);;
         this.age = age;
     }
 
@@ -20,6 +20,6 @@ class Person extends Mammal {
 
     @Override
     public String toString(){
-        return super.toString() + "\n The name of this Person is " + this.getName();
+        return super.toString() + "\nThe name of this Person is " + this.getName();
     }
 }

@@ -3,12 +3,14 @@ package fairyWorld;
 import java.util.Random;
 
 class RandomWrapper {
-    public static double getRunDouble(double min, double max){
+    // 指定された範囲内でランダムなdouble型の値を生成する
+    public static double getRanDouble(double min, double max){
         Random r = new Random();
         return min + (max - min) * r.nextDouble();
     }
 
     public static boolean ranBoolean(){
+        // true または false のいずれかがランダムに返される
         return new Random().nextBoolean();
     }
 }

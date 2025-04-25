@@ -66,9 +66,9 @@ abstract class PlayfulPetAssistant {
 
         System.out.println();
         System.out.println("Booting up... Playful Pet Assistance robot at your service.");
-        System.out.println("Printing information about the Person to service..." + person);
+        System.out.println("Printing information about the Person to service...\n" + person);
         System.out.println();
-        System.out.println("Printing information about the Playful Pet - " + playfulPet.getPetName() + " to service..." + playfulPet);
+        System.out.println("Printing information about the Playful Pet - " + playfulPet.getPetName() + " to service...\n" + playfulPet);
 
         if(tour == "all-rounder pack" || tour == "deluxe rounder pack"){
             int count = tour == "all-rounder pack" ? 1 : 3;
@@ -90,7 +90,8 @@ abstract class PlayfulPetAssistant {
     }
 
     private void genericRounderTour(int activityCount, Person person, PlayfulPet pet){
-        // 自分で "\n" と書くのではなく、どのOSでも適切な改行コード
+        // "System.lineSeparator()"は、どのOSでも適切な改行コードとして使用できるメソッド
+        // 自分で "\n" と改行コードを指定すると、OSによって異なる改行コードを指定する必要がある
         String newLine = System.lineSeparator();
         System.out.println(newLine + "Now starting the generic rounder tour with " + activityCount + " activity(s)");
         System.out.println(person.getName() + " greets " + pet.getPetName() + newLine);

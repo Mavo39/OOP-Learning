@@ -19,6 +19,6 @@ class BMI{
 
     @Override
     public String toString(){
-        return this.heightM + " meters, " + this.weightKg + "kg, BMI:" + this.getValue();
+        return " " + this.heightM + " meters\n" + " " + this.weightKg + " kg\n BMI:" + this.getValue();
     }
 }
