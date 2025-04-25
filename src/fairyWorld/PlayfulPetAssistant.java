@@ -5,6 +5,8 @@ import java.util.Random;
 
 // ペット用ロボットアシスタントを定義した抽象クラス
 // factory method以外は全ての処理が定義されている
+// このクラスは、PlayfulPetインターフェースを実装しているわけではないが、PlayfulPet型に依存している
+// 抽象クラスが別のインターフェースを使って機能を組み立てている
 abstract class PlayfulPetAssistant {
     protected static final double DEFAULT_RENT_TIME = 1.0;
     protected static final String DEFAULT_TOUR = "all-rounder pack";
