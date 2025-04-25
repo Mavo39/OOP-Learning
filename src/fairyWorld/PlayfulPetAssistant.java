@@ -62,6 +62,9 @@ abstract class PlayfulPetAssistant {
         }
         // factory methodを使ってペットを作成
         // サブクラスはこのクラスを拡張し、独自のfactory methodを作成して特定のペットを作成する
+        // インターフェースに依存している: 具体的なクラスには直接依存していない
+        // 実行時に PlayfulPet を実装したクラスのインスタンスが作られ、その参照を PlayfulPet 型の変数で扱う
+        // これにより、PlayfulPet のインターフェースを通じて、異なるペットのインスタンスを同じように扱うことができる
         PlayfulPet playfulPet = this.createPlayfulPet();
 
         System.out.println();
