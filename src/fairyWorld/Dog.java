@@ -36,7 +36,7 @@ class Dog extends Mammal implements PlayfulPet{
     @Override
     public String playWithPerson(Person person){
         String s = "The dog runs towards " + person.getName();
-        s+= ". After the dog taking kin to " + person.getName() + ", " + person.getName() + " throws a frisbee disk and the dog chases it.";
+        s += ". After the dog taking kin to " + person.getName() + ", " + person.getName() + " throws a frisbee disk and the dog chases it.";
         return s;
     }
 
