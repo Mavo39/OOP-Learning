@@ -13,7 +13,7 @@ class LaserLowTierMonster extends LaserMonster implements LowTierMonster{
     @Override
     public Skill mainSkill(){
         return this.specialSkills[0];
-    };
+    }
 
     @Override
     public String getMonsterName(){
